@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 // router
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 // port
 const port = 3001;
@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // static file
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
