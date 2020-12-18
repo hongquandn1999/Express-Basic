@@ -4,6 +4,7 @@ const path = require('path');
 // router
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const errorController = require('./controllers/error');
 // port
 const port = 3001;
 // config template engine
@@ -18,9 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-app.use((req, res, next) => {
-	res.status(404).render('404', { pageTitle: 'Page Not Found' });
-});
+app.use(errorController.get404);
 
 app.listen(port, () => {
 	console.log(`Moe in port ${port}`);
