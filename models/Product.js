@@ -1,17 +1,18 @@
 const products = [];
 const fs = require('fs');
 const path = require('path');
-const p = path.join(
-	path.dirname(process.mainModule.filename),
-	'data',
-	'product.json'
-);
+
 module.exports = class Product {
 	constructor(title) {
 		this.title = title;
 	}
 
 	save() {
+		const p = path.join(
+			path.dirname(process.mainModule.filename),
+			'data',
+			'product.json'
+		);
 		fs.readFile(p, (err, fileContent) => {
 			let products = [];
 			if (!err) {
@@ -24,12 +25,17 @@ module.exports = class Product {
 		});
 	}
 
-	static fetchAllData() {
+	static fetchAllData(callback) {
+		const p = path.join(
+			path.dirname(process.mainModule.filename),
+			'data',
+			'product.json'
+		);
 		fs.readFile(p, (err, fileContent) => {
 			if (err) {
-				return [];
+				callback([]);
 			}
+			callback(JSON.parse(fileContent));
 		});
-		return products;
 	}
 };
