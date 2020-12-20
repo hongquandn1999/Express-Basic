@@ -1,9 +1,9 @@
-<%- include('includes/header.ejs') %>
+<%- include('../includes/header.ejs') %>
     <link rel="stylesheet" href="/css/product.css">
 </head>
 
 <body>
-    <%- include('includes/navigation.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
 
     <main>
         <% if (prods.length > 0) { %>
@@ -14,7 +14,7 @@
                             <h1 class="product__title"><%= product.title %></h1>
                         </header>
                         <div class="card__image">
-                            <img src="https://cdn.elearningindustry.com/wp-content/uploads/2016/05/top-10-books-every-college-student-read-1024x640.jpeg"
+                            <img src="https://scontent.fdad3-2.fna.fbcdn.net/v/t1.0-9/131356175_1822553534582281_3836493566778764675_o.jpg?_nc_cat=1&ccb=2&_nc_sid=8bfeb9&_nc_ohc=3TmVDOSfNB0AX_GCsH8&_nc_ht=scontent.fdad3-2.fna&oh=93908860dbea075510eb527a928a128c&oe=6003146B"
                                 alt="A Book">
                         </div>
                         <div class="card__content">
@@ -31,4 +31,4 @@
             <h1>No Products Found!</h1>
         <% } %>
     </main>
-<%- include('includes/footer.ejs') %>
+<%- include('../includes/footer.ejs') %>
