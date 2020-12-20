@@ -1,3 +1,4 @@
-# Store Data
+# Setup project basic
 
-- Use path and module fs in NodeJS
+- Split all folder
+- Create two folder: admin and shop
