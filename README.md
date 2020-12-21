@@ -6,3 +6,10 @@
 # Add full function on navigation
 
 # Storing and Display product data
+
+# Setting routes for other function
+
+- Delete
+- Edit
+- Add to cart
+- Orders
