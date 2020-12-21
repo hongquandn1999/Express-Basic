@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const shortid = require('shortid');
 
 const p = path.join(
 	path.dirname(process.mainModule.filename),
@@ -25,6 +26,7 @@ module.exports = class Product {
 	}
 
 	save() {
+		this.id = shortid.generate();
 		getProductFromFile((products) => {
 			products.push(this);
 			fs.writeFile(p, JSON.stringify(products), (err) => {
@@ -35,5 +37,12 @@ module.exports = class Product {
 
 	static fetchAllData(callback) {
 		getProductFromFile(callback);
+	}
+
+	static fetchProduct(id, cb) {
+		getProductFromFile((products) => {
+			const product = products.find((p) => p.id === id);
+			cb(product);
+		});
 	}
 };
