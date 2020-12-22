@@ -23,9 +23,7 @@
                         </div>
                         <div class="card__actions">
                             <button class="btn"><a href="/admin/edit-product">Edit</a></button>
-                            <form action="/admin/delete-product" method="POST">
-                                <button class="btn" type="submit">Delete</button>
-                            </form>
+                            <%- include('../shop/add-to-cart.ejs', {product: product}) %> 
                         </div>
                     </article>
                 <% } %>

@@ -22,9 +22,16 @@ exports.getIndex = (req, res, next) => {
 // [GET] /cart
 exports.getCard = (req, res, next) => {
 	res.render('shop/cart', {
-		pageTitle: 'Your card',
+		pageTitle: 'Your cart',
 		path: '/cart',
 	});
+};
+
+// [POST] /cart
+exports.postCard = (req, res, next) => {
+	const prodId = req.body.productId;
+	console.log(prodId);
+	res.redirect('/cart');
 };
 
 // [GET] /orders
