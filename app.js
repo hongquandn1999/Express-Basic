@@ -6,7 +6,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const errorController = require('./controllers/error');
 // port
-const port = 3001;
+const port = 3002;
 // config template engine
 app.set('view engine', 'ejs');
 app.set('views', 'views');
