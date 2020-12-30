@@ -21,15 +21,32 @@ exports.getIndex = (req, res, next) => {
 	});
 };
 // [GET] /cart
-exports.getCard = (req, res, next) => {
-	res.render('shop/cart', {
-		pageTitle: 'Your cart',
-		path: '/cart',
+exports.getCart = (req, res, next) => {
+	Cart.getItemCart((cart) => {
+		Product.fetchAllData((products) => {
+			const cartProducts = [];
+			for (product of products) {
+				const cartProductData = cart.products.find(
+					(prod) => prod.id === product.id
+				);
+				if (cartProductData) {
+					cartProducts.push({
+						productData: product,
+						quantity: cartProductData.quantity,
+					});
+				}
+			}
+			res.render('shop/cart', {
+				pageTitle: 'Your cart',
+				path: '/cart',
+				products: cartProducts,
+			});
+		});
 	});
 };
 
 // [POST] /cart
-exports.postCard = (req, res, next) => {
+exports.postCart = (req, res, next) => {
 	const prodId = req.body.productId;
 	Product.fetchProduct(prodId, (prod) => {
 		Cart.addProductToCart(prodId, prod.price);

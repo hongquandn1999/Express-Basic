@@ -4,6 +4,16 @@
 <body>
     <%- include('../includes/navigation.ejs') %>
     <main>
-        <h1>Add to cart successfully</h1>
+        <% if (products.length > 0) { %>
+            <ul>
+                <% products.forEach(p => { %>
+                    <li><%= p.productData.title %> (<%= p.quantity %> ) </li>
+                <% }) %> 
+            </ul>
+        
+        <% } else { %>
+            <h1>Mimosa MT</h1>
+        <% } %>
+         
     </main>
     <%- include('../includes/footer.ejs') %>
